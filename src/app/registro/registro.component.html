@@ -1,0 +1,51 @@
+<div class="registration-container">
+    <h2>Registre d'usuari</h2>
+    <form [formGroup]="registroForm" (ngSubmit)="register()">
+      <div class="form-group">
+        <label for="name">Nom:</label>
+        <input type="text" id="name" formControlName="name">
+        <div *ngIf="hasError('name', 'required')" class="error-message">
+          El nom és obligatori
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="age">Edat:</label>
+        <input type="number" id="age" formControlName="age">
+        <div *ngIf="hasError('age', 'required')" class="error-message">
+          L'edat és obligatòria
+        </div>
+        <div *ngIf="hasError('age', 'min')" class="error-message">
+          L'edat mínima és 18
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" formControlName="email">
+        <div *ngIf="hasError('email', 'required')" class="error-message">
+          L'email és obligatori
+        </div>
+        <div *ngIf="hasError('email', 'email')" class="error-message">
+          Introdueix un email vàlid
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Contrasenya:</label>
+        <input type="password" id="password" formControlName="password">
+        <div *ngIf="hasError('password', 'required')" class="error-message">
+          La contrasenya és obligatòria
+        </div>
+        <div *ngIf="hasError('password', 'minlength')" class="error-message">
+          La contrasenya ha de tenir com a mínim 8 caràcters
+        </div>
+      </div>
+  
+      <button type="submit" [disabled]="registroForm.invalid">Registrar</button>
+    </form>
+  
+    <div *ngIf="registrationSuccess" class="success-message">
+      Registre completat amb èxit!
+    </div>
+  </div>

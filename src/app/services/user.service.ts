@@ -12,6 +12,14 @@ export class UserService {
 
   private apiUrl = "http://localhost:4000/api/users";
 
+  registerUser(user: User): Observable<User> {
+    return this.http.post<User>(`${this.apiUrl}`, {
+      name: user.name,
+      age: user.age,
+      email: user.email,
+      password: user.password // 确保发送密码
+    });
+  }
   getUsers(): Observable<User[]>{
     return this.http.get<User[]>(this.apiUrl);
   }
@@ -20,4 +28,7 @@ export class UserService {
   getUser(id: number): Observable<User>{
     return this.http.get<User>(this.apiUrl+"/"+id);
   }
+
+  
 }
+

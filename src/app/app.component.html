@@ -1,9 +1,13 @@
-@if(loggedin)
-{
+@if(loggedin) {
     <app-usuario></app-usuario>
 }
-@else  {
-    <app-login (exportLoggedIn)="getLoggedIn($event)"></app-login>
+@else if(showRegisterForm) {
+    <app-registro (backToLogin)="showRegisterForm = false"></app-registro>
 }
-
+@else {
+    <app-login 
+        (exportLoggedIn)="getLoggedIn($event)"
+        (switchToRegister)="showRegisterForm = true">
+    </app-login>
+}
 <router-outlet />

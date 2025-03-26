@@ -2,3 +2,13 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.register-link {
+    text-align: center;
+    margin-top: 15px;
+    cursor: pointer;
+}
+.register-link span {
+    color: #1976d2;
+    text-decoration: underline;
+}
